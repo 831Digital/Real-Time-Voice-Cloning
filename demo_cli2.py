@@ -123,7 +123,7 @@ if __name__ == '__main__':
     print("Loaded file succesfully")
 
     embed = encoder.embed_utterance(preprocessed_wav)
-            print("Created the embedding")
+    print("Created the embedding")
             
     while True:
         try:
