@@ -114,13 +114,24 @@ if __name__ == '__main__':
     
     print("Interactive generation loop")
     num_generated = 0
+    in_fpath = "/content/Real-Time-Voice-Cloning/UserAudio/test.wav"
+    
+    preprocessed_wav = encoder.preprocess_wav(in_fpath)
+            # - If the wav is already loaded:
+            original_wav, sampling_rate = librosa.load(in_fpath)
+            preprocessed_wav = encoder.preprocess_wav(original_wav, sampling_rate)
+            print("Loaded file succesfully")
+
+    embed = encoder.embed_utterance(preprocessed_wav)
+            print("Created the embedding")
+            
     while True:
         try:
             # Get the reference audio filepath
-            message = "Reference voice: enter an audio filepath of a voice to be cloned (mp3, " \
+            #message = "Reference voice: enter an audio filepath of a voice to be cloned (mp3, " \
                       "wav, m4a, flac, ...):\n"
             #in_fpath = Path(input(message).replace("\"", "").replace("\'", ""))
-            in_fpath = "/content/Real-Time-Voice-Cloning/UserAudio/test.wav"
+            #in_fpath = "/content/Real-Time-Voice-Cloning/UserAudio/test.wav"
             
             ## Computing the embedding
             # First, we load the wav using the function that the speaker encoder provides. This is 
@@ -128,17 +139,17 @@ if __name__ == '__main__':
             
             # The following two methods are equivalent:
             # - Directly load from the filepath:
-            preprocessed_wav = encoder.preprocess_wav(in_fpath)
+            #preprocessed_wav = encoder.preprocess_wav(in_fpath)
             # - If the wav is already loaded:
-            original_wav, sampling_rate = librosa.load(in_fpath)
-            preprocessed_wav = encoder.preprocess_wav(original_wav, sampling_rate)
-            print("Loaded file succesfully")
+            #original_wav, sampling_rate = librosa.load(in_fpath)
+            #preprocessed_wav = encoder.preprocess_wav(original_wav, sampling_rate)
+            #print("Loaded file succesfully")
             
             # Then we derive the embedding. There are many functions and parameters that the 
             # speaker encoder interfaces. These are mostly for in-depth research. You will typically
             # only use this function (with its default parameters):
-            embed = encoder.embed_utterance(preprocessed_wav)
-            print("Created the embedding")
+            #embed = encoder.embed_utterance(preprocessed_wav)
+            #print("Created the embedding")
             
             
             ## Generating the spectrogram
