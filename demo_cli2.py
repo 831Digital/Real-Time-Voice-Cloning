@@ -119,8 +119,8 @@ if __name__ == '__main__':
             # Get the reference audio filepath
             message = "Reference voice: enter an audio filepath of a voice to be cloned (mp3, " \
                       "wav, m4a, flac, ...):\n"
-            in_fpath = Path(input(message).replace("\"", "").replace("\'", ""))
-            
+            #in_fpath = Path(input(message).replace("\"", "").replace("\'", ""))
+            in_fpath = "/content/Real-Time-Voice-Cloning/UserAudio/test.wav"
             
             ## Computing the embedding
             # First, we load the wav using the function that the speaker encoder provides. This is 
